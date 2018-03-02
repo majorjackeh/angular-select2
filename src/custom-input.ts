@@ -25,7 +25,10 @@ export class CustomInputComponent implements ControlValueAccessor {
     set value(v: any) {
         if (v !== this.model) {
             this.model = v;
-            this.onChange(v);
+
+            // if this change function is defined
+            if(typeof this.onChange == 'function')
+              this.onChange(v);
         }
     }
 
